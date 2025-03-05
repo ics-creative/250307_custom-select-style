@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. カスタマイズに必須のcss設定</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* カスタマイズに必須の設定 */
+      .customized,
+      ::picker(select) {
+        appearance: base-select;
+      }
+      .wrapper {
+        display: flex;
+        gap: 64px;
+      }
+      .text-emphasis {
+        color: #cf256d;
+      }
+      .styled {
+        width: 200px;
+        height: 48px;
+        padding: 8px 16px;
+        border-color: #cf256d;
+        &:hover {
+          background-color: color-mix(in srgb, #cf256d 10%, transparent);
+        }
+      }
+      /* 選択肢のポップオーバーのスタイル */
+      .styled::picker(select) {
+        border-color: #cf256d;
+        border-radius: 8px;
+        margin: 8px 0;
+        box-shadow: #ff67b3 4px 4px;
+      }
+      .styled {
+        & > option {
+          padding: 16px 8px;
+          &:hover {
+            background-color: color-mix(in srgb, #cf256d 10%, transparent);
+          }
+          &:checked {
+            color: #cf256d;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="wrapper">
+        <section>
+          <h2>css設定<span class="text-emphasis">あり</span></h2>
+          <select class="customized">
+            <option value="">カスタマイズに</option>
+            <option value="">必要なcssが</option>
+            <option value="">設定されているよ</option>
+          </select>
+        </section>
+        <section>
+          <h2>css設定<span class="text-emphasis">なし</span></h2>
+          <select>
+            <option value="">カスタマイズに</option>
+            <option value="">必要なcssが</option>
+            <option value="">設定されていないよ</option>
+          </select>
+        </section>
+      </div>
+      <section>
+        <h2>cssで見た目を変更</h2>
+        <select class="customized styled">
+          <option value="1">選択肢1</option>
+          <option value="2">選択肢2</option>
+          <option value="3">選択肢3</option>
+        </select>
+      </section>
+    </main>
+  </body>
+</html>

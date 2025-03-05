@@ -10,27 +10,24 @@
       ::picker(select) {
         appearance: base-select;
       }
-      /* select要素のスタイル */
       select {
         border-color: #a4a4a4;
         border-radius: 8px;
       }
-      /* 選択肢のポップアップをカスタマイズするスタイル */
+
       ::picker(select) {
         border-color: #a4a4a4;
         border-radius: 8px;
       }
-      label {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-      }
       /*----------------------------------*/
       .fruits-select {
         min-width: 200px;
-        height: 40px;
+        height: 48px;
         align-items: center;
         padding: 8px;
+      }
+      .fruits-label {
+        margin-bottom: 16px;
       }
       .fruits-options {
         border: none;
@@ -39,18 +36,50 @@
         }
       }
       /*----------------------------------*/
+      /* ボタン要素内の補足は非表示にする */
+      selectedcontent .city-small {
+        display: none;
+      }
+      .city-label {
+        margin-bottom: 16px;
+      }
       .city-select {
         min-width: 320px;
-        height: 40px;
+        height: 48px;
         align-items: center;
-        padding: 8px;
+        padding: 8px 16px;
+        font-weight: bold;
+        &:hover {
+          background-color: color-mix(in srgb, #cf256d 10%, transparent);
+        }
       }
       .city-option-wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        padding: 16px;
+      }
+      .city-option-group {
+        color: #cf256d;
+        padding-top: 16px;
       }
       .city-option {
-        display: grid;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 20px;
+        color: #222;
+        font-weight: bold;
+        &:hover,
+        &:checked {
+          background-color: color-mix(in srgb, #cf256d 10%, transparent);
+        }
+        &::checkmark {
+          content: none;
+        }
+      }
+      .city-small {
+        color: #4e4e4e;
+        font-weight: normal;
       }
       /*----------------------------------*/
     </style>
@@ -59,224 +88,194 @@
     <main>
       <section>
         <h2>optionタグ内にimgタグを配置する</h2>
-        <label class="fruits-label">
-          好きなフルーツを選んでください
-          <select class="fruits-select">
-            <div class="fruits-options">
-              <option value="strawberry">
-                <img
-                  src="./images/fruits/i_strawberry.svg"
-                  width="20"
-                  height="20"
-                  alt=""
-                />
-                いちご
-              </option>
-              <option value="orange">
-                <img
-                  src="./images/fruits/i_orange.svg"
-                  width="20"
-                  height="20"
-                  alt=""
-                />
-                オレンジ
-              </option>
-              <option value="grape">
-                <img
-                  src="./images/fruits/i_grape.svg"
-                  width="20"
-                  height="20"
-                  alt=""
-                />
-                ぶどう
-              </option>
-              <option value="lemon">
-                <img
-                  src="./images/fruits/i_lemon.svg"
-                  width="20"
-                  height="20"
-                  alt=""
-                />
-                レモン
-              </option>
-            </div>
-          </select>
-        </label>
+        <p class="fruits-label">好きなフルーツを選んでください</p>
+
+        <select class="fruits-select">
+          <div class="fruits-options">
+            <option value="strawberry">
+              <img
+                src="./images/fruits/i_strawberry.svg"
+                width="20"
+                height="20"
+                alt=""
+              />
+              いちご
+            </option>
+            <option value="orange">
+              <img
+                src="./images/fruits/i_orange.svg"
+                width="20"
+                height="20"
+                alt=""
+              />
+              オレンジ
+            </option>
+            <option value="grape">
+              <img
+                src="./images/fruits/i_grape.svg"
+                width="20"
+                height="20"
+                alt=""
+              />
+              ぶどう
+            </option>
+            <option value="lemon">
+              <img
+                src="./images/fruits/i_lemon.svg"
+                width="20"
+                height="20"
+                alt=""
+              />
+              レモン
+            </option>
+          </div>
+        </select>
       </section>
 
       <section>
         <h2>optgroupタグ内に</h2>
-        <label class="city-label">
-          次の旅行はどこに行きますか
-          <select class="city-select">
-            <button>
-              <selectedcontent></selectedcontent>
-            </button>
-            <div class="city-option-wrapper">
-              <optgroup label="アジア">
-                <option class="city-option" value="seoul">
-                  <span class="city-text">ソウル</span>
-                  <caption class="city-caption">
-                    K-POPとグルメの楽園
-                  </caption>
-                </option>
-                <option class="city-option" value="hongkong">
-                  <span class="city-text">香港</span>
-                  <caption class="city-caption">
-                    ネオン輝くアジアの金融ハブ
-                  </caption>
-                </option>
-                <option value="taipei">
-                  <span class="city-text">台北</span>
-                  <caption class="city-caption">
-                    熱気あふれるグルメと文化の街
-                  </caption>
-                </option>
-                <option class="city-option" value="bangkok">
-                  <span class="city-text">バンコク</span>
-                  <caption class="city-caption">
-                    エキゾチックな寺院巡りが楽しい
-                  </caption>
-                </option>
-              </optgroup>
+        <p class="city-label">次の旅行はどこに行きますか</p>
 
-              <optgroup label="中東">
-                <option class="city-option" value="dubai">
-                  <span class="city-text">ドバイ</span>
-                  <caption class="city-caption">
-                    砂漠にそびえる近未来都市
-                  </caption>
-                </option>
-                <option class="city-option" value="istanbul">
-                  <span class="city-text">イスタンブール</span>
-                  <caption class="city-caption">
-                    東西文化が交差する歴史の都
-                  </caption>
-                </option>
-                <option class="city-option" value="cairo">
-                  <span class="city-text">カイロ</span>
-                  <caption class="city-caption">
-                    ピラミッドとナイルの古都
-                  </caption>
-                </option>
-                <option class="city-option" value="riyadh">
-                  <span class="city-text">リヤド</span>
-                  <caption class="city-caption">
-                    伝統と経済発展が共存するサウジの中心
-                  </caption>
-                </option>
-              </optgroup>
+        <select class="city-select">
+          <button class="city-select-button">
+            <selectedcontent></selectedcontent>
+          </button>
+          <div class="city-option-wrapper">
+            <optgroup class="city-option-group" label="アジア">
+              <option class="city-option" value="seoul">
+                <span class="city-text">ソウル</span>
+                <small class="city-small"> K-POPとグルメの楽園 </small>
+              </option>
+              <option class="city-option" value="hongkong">
+                <span class="city-text">香港</span>
+                <small class="city-small"> ネオン輝くアジアの金融ハブ </small>
+              </option>
+              <option class="city-option" value="taipei">
+                <span class="city-text">台北</span>
+                <small class="city-small"> 熱気あふれるグルメと文化の街 </small>
+              </option>
+              <option class="city-option" value="bangkok">
+                <span class="city-text">バンコク</span>
+                <small class="city-small">
+                  エキゾチックな寺院巡りが楽しい
+                </small>
+              </option>
+            </optgroup>
 
-              <optgroup label="ヨーロッパ">
-                <option class="city-option" value="london">
-                  <span class="city-text">ロンドン</span>
-                  <caption class="city-caption">
-                    歴史と最新トレンドが交差する街
-                  </caption>
-                </option>
-                <option class="city-option" value="paris">
-                  <span class="city-text">パリ</span>
-                  <caption class="city-caption">
-                    芸術とカフェ文化の街
-                  </caption>
-                </option>
-                <option class="city-option" value="rome">
-                  <span class="city-text">ローマ</span>
-                  <caption class="city-caption">
-                    古代遺跡が残る永遠の都
-                  </caption>
-                </option>
-                <option class="city-option" value="berlin">
-                  <span class="city-text">ベルリン</span>
-                  <caption class="city-caption">
-                    自由とアートが息づく都市
-                  </caption>
-                </option>
-              </optgroup>
+            <optgroup class="city-option-group" label="中東">
+              <option class="city-option" value="dubai">
+                <span class="city-text">ドバイ</span>
+                <small class="city-small"> 砂漠にそびえる近未来都市 </small>
+              </option>
+              <option class="city-option" value="istanbul">
+                <span class="city-text">イスタンブール</span>
+                <small class="city-small"> 東西文化が交差する歴史の都 </small>
+              </option>
+              <option class="city-option" value="cairo">
+                <span class="city-text">カイロ</span>
+                <small class="city-small"> ピラミッドとナイルの古都 </small>
+              </option>
+              <option class="city-option" value="riyadh">
+                <span class="city-text">リヤド</span>
+                <small class="city-small">
+                  伝統と経済発展が共存するサウジの中心
+                </small>
+              </option>
+            </optgroup>
 
-              <optgroup label="北米">
-                <option class="city-option" value="newyork">
-                  <span class="city-text">ニューヨーク</span>
-                  <caption class="city-caption">
-                    世界が集まる眠らない街
-                  </caption>
-                </option>
-                <option class="city-option" value="losangeles">
-                  <span class="city-text">ロサンゼルス</span>
-                  <caption class="city-caption">
-                    エンタメとビーチの夢の都市
-                  </caption>
-                </option>
-                <option class="city-option" value="toronto">
-                  <span class="city-text">トロント</span>
-                  <caption class="city-caption">
-                    多文化が共存するカナダの中心地
-                  </caption>
-                </option>
-                <option class="city-option" value="mexicocity">
-                  <span class="city-text">メキシコシティ</span>
-                  <caption class="city-caption">
-                    歴史とモダンが融合する大都市
-                  </caption>
-                </option>
-              </optgroup>
+            <optgroup class="city-option-group" label="ヨーロッパ">
+              <option class="city-option" value="london">
+                <span class="city-text">ロンドン</span>
+                <small class="city-small">
+                  歴史と最新トレンドが交差する街
+                </small>
+              </option>
+              <option class="city-option" value="paris">
+                <span class="city-text">パリ</span>
+                <small class="city-small"> 芸術とカフェ文化の街 </small>
+              </option>
+              <option class="city-option" value="rome">
+                <span class="city-text">ローマ</span>
+                <small class="city-small"> 古代遺跡が残る永遠の都 </small>
+              </option>
+              <option class="city-option" value="berlin">
+                <span class="city-text">ベルリン</span>
+                <small class="city-small"> 自由とアートが息づく都市 </small>
+              </option>
+            </optgroup>
 
-              <optgroup label="南米">
-                <option class="city-option" value="rio">
-                  <span class="city-text">リオデジャネイロ</span>
-                  <caption class="city-caption">
-                    カーニバルとビーチの楽園
-                  </caption>
-                </option>
-                <option class="city-option" value="buenosaires">
-                  <span class="city-text">ブエノスアイレス</span>
-                  <caption class="city-caption">
-                    タンゴとヨーロッパ文化が息づく街
-                  </caption>
-                </option>
-                <option class="city-option" value="lima">
-                  <span class="city-text">リマ</span>
-                  <caption class="city-caption">
-                    美食とインカの遺産が楽しめる都市
-                  </caption>
-                </option>
-                <option class="city-option" value="bogota">
-                  <span class="city-text">ボゴタ</span>
-                  <caption class="city-caption">
-                    アンデス山脈に抱かれたコロンビアの首都
-                  </caption>
-                </option>
-              </optgroup>
+            <optgroup class="city-option-group" label="北米">
+              <option class="city-option" value="newyork">
+                <span class="city-text">ニューヨーク</span>
+                <small class="city-small"> 世界が集まる眠らない街 </small>
+              </option>
+              <option class="city-option" value="losangeles">
+                <span class="city-text">ロサンゼルス</span>
+                <small class="city-small"> エンタメとビーチの夢の都市 </small>
+              </option>
+              <option class="city-option" value="toronto">
+                <span class="city-text">トロント</span>
+                <small class="city-small">
+                  多文化が共存するカナダの中心地
+                </small>
+              </option>
+              <option class="city-option" value="mexicocity">
+                <span class="city-text">メキシコシティ</span>
+                <small class="city-small"> 歴史とモダンが融合する大都市 </small>
+              </option>
+            </optgroup>
 
-              <optgroup label="アフリカ">
-                <option class="city-option" value="cairo">
-                  <span class="city-text">カイロ</span>
-                  <caption class="city-caption">
-                    ピラミッドとナイルの古都
-                  </caption>
-                </option>
-                <option class="city-option" value="capetown">
-                  <span class="city-text">ケープタウン</span>
-                  <caption class="city-caption">
-                    テーブルマウンテンとワインの街
-                  </caption>
-                </option>
-                <option class="city-option" value="nairobi">
-                  <span class="city-text">ナイロビ</span>
-                  <caption class="city-caption">
-                    野生動物と都市が共存するアフリカの玄関口
-                  </caption>
-                </option>
-                <option class="city-option" value="marrakech">
-                  <span class="city-text">マラケシュ</span>
-                  <caption class="city-caption">
-                    迷路のようなスークが広がる魔法の街
-                  </caption>
-                </option>
-              </optgroup>
-            </div>
-          </select>
-        </label>
+            <optgroup class="city-option-group" label="南米">
+              <option class="city-option" value="rio">
+                <span class="city-text">リオデジャネイロ</span>
+                <small class="city-small"> カーニバルとビーチの楽園 </small>
+              </option>
+              <option class="city-option" value="buenosaires">
+                <span class="city-text">ブエノスアイレス</span>
+                <small class="city-small">
+                  タンゴとヨーロッパ文化が息づく街
+                </small>
+              </option>
+              <option class="city-option" value="lima">
+                <span class="city-text">リマ</span>
+                <small class="city-small">
+                  美食とインカの遺産が楽しめる都市
+                </small>
+              </option>
+              <option class="city-option" value="bogota">
+                <span class="city-text">ボゴタ</span>
+                <small class="city-small">
+                  アンデス山脈に抱かれたコロンビアの首都
+                </small>
+              </option>
+            </optgroup>
+
+            <optgroup class="city-option-group" label="アフリカ">
+              <option class="city-option" value="cairo">
+                <span class="city-text">カイロ</span>
+                <small class="city-small"> ピラミッドとナイルの古都 </small>
+              </option>
+              <option class="city-option" value="capetown">
+                <span class="city-text">ケープタウン</span>
+                <small class="city-small">
+                  テーブルマウンテンとワインの街
+                </small>
+              </option>
+              <option class="city-option" value="nairobi">
+                <span class="city-text">ナイロビ</span>
+                <small class="city-small">
+                  野生動物と都市が共存するアフリカの玄関口
+                </small>
+              </option>
+              <option class="city-option" value="marrakech">
+                <span class="city-text">マラケシュ</span>
+                <small class="city-small">
+                  迷路のようなスークが広がる魔法の街
+                </small>
+              </option>
+            </optgroup>
+          </div>
+        </select>
       </section>
     </main>
   </body>

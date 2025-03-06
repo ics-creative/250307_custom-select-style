@@ -28,11 +28,16 @@
         display: none;
       }
       .content-wrapper {
-        display: flex;
         align-items: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
       }
       .description {
         margin-right: 16px;
+      }
+      .button-wrapper {
+        display: flex;
+        align-items: center;
       }
       .login-button {
         height: 60px;
@@ -44,6 +49,7 @@
         font-size: 18px;
         cursor: pointer;
         transition: background-color 0.2s;
+        anchor-name: --login-button;
         &:hover {
           background-color: #bb1e5f;
         }
@@ -97,6 +103,19 @@
       .role-text {
         font-weight: bold;
       }
+      @media screen and (max-width: 767px) {
+        select::picker(select) {
+          position-anchor: --login-button;
+          position-area: revert;
+        }
+        .description {
+          margin-right: 0;
+          margin-bottom: 16px;
+        }
+        .content-wrapper {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body>
@@ -105,30 +124,34 @@
         <h2>selectedcontentelementを使用した例</h2>
         <div class="content-wrapper">
           <p class="description">権限を選択してログインしてください</p>
-          <button class="login-button">
-            <selectedcontent id="selected"></selectedcontent>としてログイン
-          </button>
-          <select class="role-select" selectedcontentelement="selected">
-            <button class="role-button"></button>
-            <option value="admin">
-              <span class="role-text">管理者</span>
-              <small class="role-description"
-                >アカウントに関するすべての権限があります</small
-              >
-            </option>
-            <hr />
-            <option value="editor">
-              <span class="role-text">編集者</span>
-              <small class="role-description">コンテンツの編集が可能です</small>
-            </option>
-            <hr />
-            <option value="viewer">
-              <span class="role-text">閲覧者</span>
-              <small class="role-description"
-                >コンテンツの閲覧のみ可能です</small
-              >
-            </option>
-          </select>
+          <div class="button-wrapper">
+            <button class="login-button">
+              <selectedcontent id="selected"></selectedcontent>としてログイン
+            </button>
+            <select class="role-select" selectedcontentelement="selected">
+              <button class="role-button"></button>
+              <option value="admin">
+                <span class="role-text">管理者</span>
+                <small class="role-description"
+                  >アカウントに関するすべての権限があります</small
+                >
+              </option>
+              <hr />
+              <option value="editor">
+                <span class="role-text">編集者</span>
+                <small class="role-description"
+                  >コンテンツの編集が可能です</small
+                >
+              </option>
+              <hr />
+              <option value="viewer">
+                <span class="role-text">閲覧者</span>
+                <small class="role-description"
+                  >コンテンツの閲覧のみ可能です</small
+                >
+              </option>
+            </select>
+          </div>
         </div>
       </section>
     </main>

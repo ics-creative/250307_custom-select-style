@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04. selectedcontentelementの使用例</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      select,
+      ::picker(select) {
+        appearance: base-select;
+      }
+      select {
+        border-color: #a4a4a4;
+        border-radius: 8px;
+      }
+      select::picker(select) {
+        border-color: #a4a4a4;
+        border-radius: 8px;
+        position-anchor: --role-button;
+        position-area: top right;
+      }
+      select::picker-icon,
+      option::checkmark {
+        display: none;
+      }
+      selectedcontent .role-description {
+        display: none;
+      }
+      .content-wrapper {
+        display: flex;
+        align-items: center;
+      }
+      .login-button {
+        height: 60px;
+        border: none;
+        border-radius: 8px 0 0 8px;
+        background-color: #cf256d;
+        color: #fff;
+        padding: 0 24px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        &:hover {
+          background-color: #bb1e5f;
+        }
+      }
+      .role-select {
+        border-radius: 0 8px 8px 0;
+        border-left: none;
+        height: 60px;
+        width: 60px;
+      }
+      option {
+        padding: 12px 12px 12px 44px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        &:checked {
+          &::before {
+            content: "";
+            height: 24px;
+            width: 24px;
+            position: absolute;
+            background-image: url(./images/i_check.svg);
+            background-repeat: no-repeat;
+            background-size: 24px;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            margin-left: 10px;
+          }
+        }
+      }
+      .role-button {
+        display: block;
+        position: relative;
+        width: 100%;
+        anchor-name: --role-button;
+        &::before {
+          content: "";
+          height: 40px;
+          width: 40px;
+          position: absolute;
+          background-image: url(./images/i_arrow.svg);
+          background-repeat: no-repeat;
+          background-size: 40px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      .role-text {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>selectedcontentelementを使用した例</h2>
+        <div class="content-wrapper">
+          <button class="login-button">
+            <selectedcontent id="selected"></selectedcontent>としてログイン
+          </button>
+          <select class="role-select" selectedcontentelement="selected">
+            <button class="role-button"></button>
+            <option value="admin">
+              <span class="role-text">管理者</span>
+              <small class="role-description"
+                >アカウントに関するすべての権限があります</small
+              >
+            </option>
+            <hr />
+            <option value="editor">
+              <span class="role-text">編集者</span>
+              <small class="role-description">コンテンツの編集が可能です</small>
+            </option>
+            <hr />
+            <option value="viewer">
+              <span class="role-text">閲覧者</span>
+              <small class="role-description"
+                >コンテンツの閲覧のみ可能です</small
+              >
+            </option>
+          </select>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

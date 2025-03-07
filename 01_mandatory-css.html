@@ -33,6 +33,11 @@
         border-radius: 8px;
         margin: 8px 0;
         box-shadow: 4px 4px #ff67b3;
+        /* アニメーションも設定できる */
+        transition: scale 0.2s;
+      }
+      .styled::picker(select):hover {
+        scale: 1.05;
       }
       .styled {
         & > option {

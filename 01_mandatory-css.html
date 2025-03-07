@@ -32,7 +32,7 @@
         border-color: #cf256d;
         border-radius: 8px;
         margin: 8px 0;
-        box-shadow: #ff67b3 4px 4px;
+        box-shadow: 4px 4px #ff67b3;
       }
       .styled {
         & > option {
@@ -45,15 +45,10 @@
           }
         }
       }
-      @media screen and (max-width: 767px) {
-        .wrapper {
-          gap: 0;
-          justify-content: space-between;
-        }
-      }
-      @media screen and (max-width: 767px) {
+      @media (width < 767px) {
         .wrapper {
           flex-direction: column;
+          justify-content: space-between;
           gap: 0;
         }
       }

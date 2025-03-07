@@ -18,6 +18,7 @@
         border-color: #a4a4a4;
         border-radius: 8px;
         max-height: 400px;
+        height: min(400px, 60%);
       }
       /*----------------------------------*/
       /* ボタン要素内の補足は非表示にする */
@@ -65,7 +66,10 @@
         color: #4e4e4e;
         font-weight: normal;
       }
-      @media (width < 767px) {
+      @media (width < 860px) {
+        .city-select {
+          width: 260px;
+        }
         .city-option-wrapper {
           grid-template-columns: 1fr;
           padding: 8px;
@@ -123,7 +127,7 @@
               <option class="city-option" value="riyadh">
                 <span class="city-text">リヤド</span>
                 <small class="city-small">
-                  伝統と経済発展が共存するサウジの中心
+                  伝統と経済発展が共存する中心地
                 </small>
               </option>
             </optgroup>
@@ -166,14 +170,14 @@
               </option>
               <option class="city-option" value="mexicocity">
                 <span class="city-text">メキシコシティ</span>
-                <small class="city-small"> 歴史とモダンが融合する大都市 </small>
+                <small class="city-small">歴史とモダンが融合する大都市</small>
               </option>
             </optgroup>
 
             <optgroup class="city-option-group" label="南米">
               <option class="city-option" value="rio">
                 <span class="city-text">リオデジャネイロ</span>
-                <small class="city-small"> カーニバルとビーチの楽園 </small>
+                <small class="city-small">カーニバルとビーチの楽園</small>
               </option>
               <option class="city-option" value="buenosaires">
                 <span class="city-text">ブエノスアイレス</span>
@@ -198,7 +202,7 @@
             <optgroup class="city-option-group" label="アフリカ">
               <option class="city-option" value="cairo">
                 <span class="city-text">カイロ</span>
-                <small class="city-small"> ピラミッドとナイルの古都 </small>
+                <small class="city-small">ピラミッドとナイルの古都</small>
               </option>
               <option class="city-option" value="capetown">
                 <span class="city-text">ケープタウン</span>
@@ -208,9 +212,7 @@
               </option>
               <option class="city-option" value="nairobi">
                 <span class="city-text">ナイロビ</span>
-                <small class="city-small">
-                  野生動物と都市が共存するアフリカの玄関口
-                </small>
+                <small class="city-small"> 野生動物と都市が共存する街 </small>
               </option>
               <option class="city-option" value="marrakech">
                 <span class="city-text">マラケシュ</span>

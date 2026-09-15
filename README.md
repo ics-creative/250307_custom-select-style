@@ -4,7 +4,7 @@ ICS MEDIAの記事『[HTML/CSSで装飾可能に！ select・optionタグの新�
 
 ## デモの確認方法
 
-`01_mandatory-css.html`〜`03_selectedcontent.html`は、Chrome・Edge 134、Safari 27.0以上で開いてください。
+`01_mandatory-css.html`〜`03_selectedcontent.html`は、Chrome・Edge 135、Safari 27.0以上で開いてください。
 
 `04_selectedcontentelement.html`は、次のいずれかの方法で開いてください。
 
